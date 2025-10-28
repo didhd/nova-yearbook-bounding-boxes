@@ -125,12 +125,12 @@ Yearbook Image → Amazon Bedrock → Nova Pro → JSON Response → Visualizati
 
 ## Advantages Over Traditional Approaches
 
-| Feature | Nova Pro | Traditional CV | Textract Layout |
-|---------|----------|----------------|-----------------|
-| Grid Detection | ✅ Excellent | ❌ Poor | ⚠️ Limited |
-| Natural Language | ✅ Yes | ❌ No | ❌ No |
-| Training Required | ✅ No | ❌ Yes | ✅ No |
-| Contextual Understanding | ✅ Yes | ❌ No | ⚠️ Limited |
+| Feature                  | Nova Pro    | Traditional CV | Textract Layout |
+| ------------------------ | ----------- | -------------- | --------------- |
+| Grid Detection           | ✅ Excellent | ❌ Poor         | ⚠️ Limited       |
+| Natural Language         | ✅ Yes       | ❌ No           | ❌ No            |
+| Training Required        | ✅ No        | ❌ Yes          | ✅ No            |
+| Contextual Understanding | ✅ Yes       | ❌ No           | ⚠️ Limited       |
 
 ## Troubleshooting
 
