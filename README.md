@@ -2,6 +2,8 @@
 
 This notebook demonstrates how to use **Amazon Nova Pro** to detect individual portrait photos in yearbook grid layouts using natural language instructions.
 
+![Yearbook Photo Detection Example](output.png)
+
 ## Overview
 
 Traditional computer vision approaches struggle with dense yearbook photo grids where portraits are tightly packed together. Amazon Nova Pro's vision-language capabilities can understand contextual instructions like "detect individual portrait photos in this grid layout" to accurately identify each student photo separately.

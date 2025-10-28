@@ -47,3 +47,5 @@ yearbook_detections.json
 *.jpg
 *.png
 !sample.jpg
+!output.png
+!output.png
