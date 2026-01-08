@@ -1,12 +1,24 @@
-# Amazon Nova Pro - Yearbook Photo Bounding Box Detection
+# Amazon Nova - Yearbook Photo Bounding Box Detection
 
-This notebook demonstrates how to use **Amazon Nova Pro** to detect individual portrait photos in yearbook grid layouts using natural language instructions.
+> **New!** Added `Nova_2_Pro_Yearbook_BoundingBox.ipynb` and `Nova_2_Lite_Yearbook_BoundingBox.ipynb` for Amazon Nova 2 models
+
+This repository demonstrates how to use **Amazon Nova** models to detect individual portrait photos in yearbook grid layouts using natural language instructions.
+
+## Available Notebooks
+
+| Notebook | Model | Description |
+|----------|-------|-------------|
+| `Nova_Pro_Yearbook_BoundingBox.ipynb` | Nova Pro 1.0 | Original implementation |
+| `Nova_2_Lite_Yearbook_BoundingBox.ipynb` | Nova 2 Lite | Lightweight, cost-effective option |
+| `Nova_2_Pro_Yearbook_BoundingBox.ipynb` | Nova 2 Pro | Latest model with improved accuracy |
+
+**Example of Nova 2 Pro:**
 
 ![Yearbook Photo Detection Example](output.png)
 
 ## Overview
 
-Traditional computer vision approaches struggle with dense yearbook photo grids where portraits are tightly packed together. Amazon Nova Pro's vision-language capabilities can understand contextual instructions like "detect individual portrait photos in this grid layout" to accurately identify each student photo separately.
+Traditional computer vision approaches struggle with dense yearbook photo grids where portraits are tightly packed together. Amazon Nova's vision-language capabilities can understand contextual instructions like "detect individual portrait photos in this grid layout" to accurately identify each student photo separately.
 
 ## Features
 
@@ -27,7 +39,7 @@ This solution is designed for:
 ## Prerequisites
 
 - AWS Account with Amazon Bedrock access
-- Amazon Nova Pro model enabled in your region
+- Amazon Nova models enabled in your region
 - Python 3.8+
 - Jupyter Notebook environment
 
@@ -49,15 +61,11 @@ This solution is designed for:
    aws configure
    ```
 
-4. **Enable Amazon Nova Pro**
-   - Go to [Amazon Bedrock Console](https://console.aws.amazon.com/bedrock/home#/modelaccess)
-   - Request access to Amazon Nova Pro model
-
 ## Usage
 
-1. Open the Jupyter notebook:
+1. Open one of the Jupyter notebooks:
    ```bash
-   jupyter notebook Nova_Pro_Yearbook_BoundingBox.ipynb
+   jupyter notebook Nova_2_Pro_Yearbook_BoundingBox.ipynb  # Recommended (requires preview access)
    ```
 
 2. Update the image path in the notebook:
@@ -101,7 +109,11 @@ Ensure your AWS credentials have permission to invoke Bedrock models:
     {
       "Effect": "Allow",
       "Action": "bedrock:InvokeModel",
-      "Resource": "arn:aws:bedrock:*::foundation-model/amazon.nova-pro-v1:0"
+      "Resource": [
+        "arn:aws:bedrock:*::foundation-model/amazon.nova-pro-v1:0",
+        "arn:aws:bedrock:*::foundation-model/us.amazon.nova-2-lite-v1:0",
+        "arn:aws:bedrock:*::foundation-model/us.amazon.nova-2-pro-*"
+      ]
     }
   ]
 }
@@ -109,39 +121,27 @@ Ensure your AWS credentials have permission to invoke Bedrock models:
 
 ## Cost Considerations
 
-Amazon Nova Pro pricing (as of 2025):
-- ~$0.003-0.005 per image
-- For 100M yearbook pages: ~$300K-500K
-
-Compare with:
-- Amazon Textract Layout: $0.015 per page
-- Bedrock Data Automation: $0.01 per page
+For pricing details, refer to [Amazon Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/).
 
 ## Architecture
 
 ```
-Yearbook Image → Amazon Bedrock → Nova Pro → JSON Response → Visualization
+Yearbook Image → Amazon Bedrock → Nova Model → JSON Response → Visualization
 ```
 
 ## Advantages Over Traditional Approaches
 
-| Feature                  | Nova Pro    | Traditional CV | Textract Layout |
-| ------------------------ | ----------- | -------------- | --------------- |
-| Grid Detection           | ✅ Excellent | ❌ Poor         | ⚠️ Limited       |
-| Natural Language         | ✅ Yes       | ❌ No           | ❌ No            |
-| Training Required        | ✅ No        | ❌ Yes          | ✅ No            |
-| Contextual Understanding | ✅ Yes       | ❌ No           | ⚠️ Limited       |
+Amazon Nova models offer vision-language capabilities that can understand natural language instructions for object detection tasks.
 
 ## Troubleshooting
 
 **Model Access Error**
-- Verify Nova Pro is enabled in your AWS region
+- Verify the Nova model you're using is enabled in your AWS region
 - Check IAM permissions for `bedrock:InvokeModel`
 
 **Poor Detection Results**
-- Ensure image resolution is adequate (recommended: 1500x2000+)
+- Ensure image resolution is adequate
 - Try adjusting the prompt for specific layout types
-- Consider adding padding to bounding boxes (5-10%)
 
 **JSON Parsing Errors**
 - Check the raw model response in the notebook output
@@ -169,4 +169,4 @@ For questions or issues:
 
 ## Acknowledgments
 
-Built with Amazon Nova Pro, a multimodal foundation model by AWS.
+Built with Amazon Nova, multimodal foundation models by AWS.
